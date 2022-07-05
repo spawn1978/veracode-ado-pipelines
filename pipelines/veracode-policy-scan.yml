@@ -60,9 +60,9 @@ steps:
   - task: Veracode@3
     inputs:
       ConnectionDetailsSelection: 'Endpoint'
-      AnalysisService: 'MyProject-Veracode'
-      veracodeAppProfile: 'MyProject'
-      version: 'MyProject-$(build.buildNumber)'
+      AnalysisService: 'apiveracode'
+      veracodeAppProfile: '$(system.teamProject)'
+      version: '$(build.buildNumber)'
       filepath: '$(Build.ArtifactStagingDirectory)\$(Build.BuildId)-policy-scan.zip'
       createSandBox: false
       createProfile: false
@@ -71,4 +71,5 @@ steps:
       scanStatusCheckInterval: '60'
       importResults: true
       failBuildOnPolicyFail: false
+      maximumWaitTime: '60'
     displayName: Run Veracode policy scan on all project files
