@@ -5,6 +5,14 @@ trigger: none
 
 pool:
   vmImage: windows-latest
+  
+  
+- task: UseDotNet@2
+  displayName: Use .NET 
+  inputs: 
+    packageType: 'sdk'
+    version: 3.x
+    #vsVersion: 17.0.x 
 
 # If you created a DotNet project, make sure that the .dll, .exe and .pdb are included here
 variables:
